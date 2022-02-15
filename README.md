@@ -45,7 +45,7 @@ I have created a filter expression for only movies with a director and an IMDb l
         
 Now that I've filtered out bad data, I will need to clean up each movie entry so it's in a standard format.
 
-def clean_movie(movie):
+    def clean_movie(movie):
     movie = dict(movie) #create a non-destructive copy
     alt_titles = {}
     for key in ['Also known as','Arabic','Cantonese','Chinese','French',
@@ -53,12 +53,11 @@ def clean_movie(movie):
                 'Mandarin','McCune–Reischauer','Original title','Polish',
                 'Revised Romanization','Romanized','Russian',
                 'Simplified','Traditional','Yiddish']:
-        if key in movie:
+    if key in movie:
             alt_titles[key] = movie[key]
             movie.pop(key)
     if len(alt_titles) > 0:
         movie['alt_titles'] = alt_titles
-
     return movie
     
 Now I can make a list of cleaned movies with a list comprehension:
